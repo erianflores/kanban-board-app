@@ -1,4 +1,4 @@
-import logoImage from "";
+import logoImage from "../assets/logo-taskcanvas.png";
 
 export default function Navbar() {
   return (
