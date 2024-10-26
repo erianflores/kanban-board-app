@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Column from './components/Column';
-import AddTask from './component/AddTask';
+import AddTask from './components/AddTask';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
