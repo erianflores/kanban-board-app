@@ -1,9 +1,12 @@
 #navbar-container {
+    left: 200px;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: gray ;
     height: 100px;
+    width: 100%;
 }
 
 #website-logo {
