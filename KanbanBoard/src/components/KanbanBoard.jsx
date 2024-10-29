@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import Column from './components/Column';
-import AddTask from './components/AddTask';
+import { useState } from 'react';
+import Column from './Column';
+import AddTask from './AddTask';
 import '../styles/KanbanBoard.css';
 
 export default function KanbanBoard() {
@@ -21,6 +21,17 @@ export default function KanbanBoard() {
       })
 
   return (
-    <div>KanbanBoard</div>
-  )
+    <div id='overlay-lower'>
+      <div id="kanban-container">
+        {Object.entries(boards).map(([boardId, board]) => (
+          <Column
+          key={boardId}
+          title={board.title}
+          items={board.items}
+          boardId={boardId}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }

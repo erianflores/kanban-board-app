@@ -1,0 +1,17 @@
+#navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray ;
+    height: 100px;
+}
+
+#website-logo {
+    width: 10%;
+    justify-self: flex-start;
+}
+
+#website-name {
+    font-size: 2rem;
+    color: purple;
+}

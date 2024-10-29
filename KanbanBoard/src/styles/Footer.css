@@ -1,0 +1,16 @@
+#footer-container {
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    bottom: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: white;
+}
+
+#footer-github-link {
+    all: unset;
+    font-size: 1rem;
+    color: purple;
+}

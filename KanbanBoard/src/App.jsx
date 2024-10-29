@@ -12,6 +12,8 @@ export default function App() {
     <>
       <Navbar />
       <Sidebar />
+      <KanbanBoard />
+      <Footer />
     </>
   )
 }
