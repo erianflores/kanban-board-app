@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Task.css";
 
-export default function Task({ items }) {
+export default function Task({ items, onDelete }) {
   return (
     <>
       {items.map((item) => (
@@ -17,6 +17,7 @@ export default function Task({ items }) {
           <p>
             <strong>Due Date:</strong> {item.dueDate}
           </p>
+          <button id="delete-button" onClick={() => onDelete(item.id)}>Delete</button>
         </div>
       ))}
     </>
