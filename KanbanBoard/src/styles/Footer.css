@@ -14,4 +14,9 @@
     all: unset;
     font-size: 1rem;
     color: purple;
+    cursor: pointer;
+}
+
+#footer-github-link:hover {
+    color: darkblue;
 }
