@@ -1,17 +1,15 @@
 #navbar-container {
-    left: 200px;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: gray ;
+    background-color: white ;
     height: 100px;
     width: 100%;
 }
 
 #website-logo {
-    width: 10%;
-    justify-self: flex-start;
+    width: 200px;
 }
 
 #website-name {
