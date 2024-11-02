@@ -19,7 +19,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<KanbanBoard />} />
             <Route path="/about-page" element={<AboutPage />} />
-            <Route path="/details" element={<Details />} />
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>
