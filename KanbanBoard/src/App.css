@@ -3,6 +3,7 @@
 @import url(./styles/Navbar.css);
 @import url(./styles/Sidebar.css);
 @import url(./styles/Task.css);
+@import url(./styles/pages.css);
 
 body {
     background-color: purple;

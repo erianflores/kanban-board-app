@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
     <div id='sidebar-container'>
-        <a href='#' id='home-page-link' className='sidebar-link'>Home</a>
-        <a href='#' id='about-page-link' className='sidebar-link'>About</a>
+      <Link to='/' className='sidebar-link'>Home</Link>
+      <Link to='/about-page' className='sidebar-link'>About</Link>
+      <Link to='/details' className='sidebar-link'>Details</Link>
     </div>
-  )
+  );
 }
