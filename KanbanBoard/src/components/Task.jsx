@@ -7,17 +7,17 @@ export default function Task({ items, onDelete }) {
     <>
       {items.map((item) => (
         <div key={item.id} className="kanban-item">
-          <Link to={`/details/${item.id}`}>
+          <Link className="detail-row" to={`/details/${item.id}`}>
             <h3>{item.title}</h3>
           </Link>
-          <p>{item.description}</p>
-          <p>
+          <p className="detail-row">{item.description}</p>
+          <p className="detail-row">
             <strong>Assignee:</strong> {item.assignee}
           </p>
-          <p>
+          <p className="detail-row">
             <strong>Priority:</strong> {item.priority}
           </p>
-          <p>
+          <p className="detail-row">
             <strong>Due Date:</strong> {item.dueDate}
           </p>
           <button id="delete-button" onClick={() => onDelete(item.id)}>

@@ -5,7 +5,6 @@ export default function Sidebar() {
     <div id='sidebar-container'>
       <Link to='/' className='sidebar-link'>Home</Link>
       <Link to='/about-page' className='sidebar-link'>About</Link>
-      <Link to='/details' className='sidebar-link'>Details</Link>
     </div>
   );
 }
