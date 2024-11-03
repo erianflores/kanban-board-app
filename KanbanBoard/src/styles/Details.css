@@ -1,8 +1,9 @@
-.kanban-item {
+.details-content {
   border: 2px solid black;
   padding: 10px 10px 20px 20px;
-  border-radius: 10%;
+  border-radius: 5%;
   margin: 0px 5px 20px 0px;
   background-color: rgba(138, 112, 159, 0.486);
   box-shadow: 5px 5px 10px rgba(82, 82, 82, 0.925);
+  display: inline-block;
 }

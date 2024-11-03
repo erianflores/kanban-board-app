@@ -4,7 +4,8 @@
 @import url(./styles/Sidebar.css);
 @import url(./styles/Task.css);
 @import url(./styles/pages.css);
+@import url(./styles/Details.css);
 
 body {
-    background-color: purple;
+  background-color: purple;
 }

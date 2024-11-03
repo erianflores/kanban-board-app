@@ -1,22 +1,23 @@
 #footer-container {
-    justify-content: center;
-    display: flex;
-    position: fixed;
-    left: 200px;
-    align-items: center;
-    bottom: 0;
-    width: 100vw;
-    height: 50px;
-    background-color: white;
+  justify-content: center;
+  display: flex;
+  position: fixed;
+  left: 200px;
+  bottom: 200px;
+  align-items: center;
+  bottom: 0;
+  width: 100vw;
+  height: 50px;
+  background-color: rgba(28, 28, 28, 0.839);
 }
 
 #footer-github-link {
-    all: unset;
-    font-size: 1rem;
-    color: purple;
-    cursor: pointer;
+  all: unset;
+  font-size: 1rem;
+  color: rgb(186, 186, 186);
+  cursor: pointer;
 }
 
 #footer-github-link:hover {
-    color: darkblue;
+  color: rgb(134, 68, 160);
 }
