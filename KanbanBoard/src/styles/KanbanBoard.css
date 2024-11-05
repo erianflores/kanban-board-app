@@ -5,11 +5,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
-  left: 225px;
+  left: 220px;
   top: 100px;
-  right: 100px;
   bottom: 50px;
-  width: calc(100% - 250px); /* Matches left: 300px */
+  width: calc(100% - 220px); /* Matches left: 300px */
   height: calc(100vh - 150px);
 }
 
