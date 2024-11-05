@@ -6,3 +6,7 @@
   background-color: rgba(138, 112, 159, 0.486);
   box-shadow: 5px 5px 10px rgba(82, 82, 82, 0.925);
 }
+
+#delete-button {
+  margin-top: 10px;
+}
