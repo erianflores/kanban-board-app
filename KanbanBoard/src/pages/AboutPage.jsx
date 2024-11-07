@@ -22,6 +22,16 @@ export default function AboutPage() {
                 </a>
               </div>
             </div>
+            <h2>Team Member</h2>
+            <div className="member-info">
+              <h3>Luke Farrell</h3>
+              <p>Full Stack Developer</p>
+              <div className="social-links">
+                <a href="https://github.com/rephlax" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
