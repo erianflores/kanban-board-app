@@ -1,22 +1,23 @@
-import { useState } from 'react';
-import '../styles/KanbanBoard.css';
+import { useState } from "react";
+import "../styles/KanbanBoard.css";
 import data from "../assets/kanban.json";
-import Column from './Column';
-import EditTaskForm from '../pages/EditTaskForm';
+import Column from "./Column";
+import EditTaskForm from "../pages/EditTaskForm";
+import AddTaskForm from "../pages/AddTaskForm";
 
 export default function KanbanBoard() {
   const initialBoards = {
     todo: {
       title: "To Do",
-      items: data.filter(task => task.status === "To Do"),
+      items: data.filter((task) => task.status === "To Do"),
     },
     inProgress: {
       title: "In Progress",
-      items: data.filter(task => task.status === "In Progress"),
+      items: data.filter((task) => task.status === "In Progress"),
     },
     done: {
       title: "Done",
-      items: data.filter(task => task.status === "Done"),
+      items: data.filter((task) => task.status === "Done"),
     },
   };
 
@@ -25,8 +26,10 @@ export default function KanbanBoard() {
   const [selectedTask, setSelectedTask] = useState(null);
 
   const handleDeleteClick = (id, status) => {
-    setBoards(prevBoards => {
-      const updatedItems = prevBoards[status].items.filter(item => item.id !== id);
+    setBoards((prevBoards) => {
+      const updatedItems = prevBoards[status].items.filter(
+        (item) => item.id !== id
+      );
       return {
         ...prevBoards,
         [status]: {
@@ -43,9 +46,9 @@ export default function KanbanBoard() {
   };
 
   const handleUpdateTask = (updatedTask) => {
-    setBoards(prevBoards => {
-      const boardKey = Object.keys(prevBoards).find(key => 
-        prevBoards[key].items.some(item => item.id === updatedTask.id)
+    setBoards((prevBoards) => {
+      const boardKey = Object.keys(prevBoards).find((key) =>
+        prevBoards[key].items.some((item) => item.id === updatedTask.id)
       );
 
       if (!boardKey) return prevBoards;
@@ -54,7 +57,7 @@ export default function KanbanBoard() {
         ...prevBoards,
         [boardKey]: {
           ...prevBoards[boardKey],
-          items: prevBoards[boardKey].items.map(item =>
+          items: prevBoards[boardKey].items.map((item) =>
             item.id === updatedTask.id ? updatedTask : item
           ),
         },
@@ -63,11 +66,26 @@ export default function KanbanBoard() {
   };
 
   return (
-    <div id='overlay-lower'>
+    <div id="overlay-lower">
       <div id="kanban-container">
-        <Column title={boards.todo.title} items={boards.todo.items} onDelete={(id) => handleDeleteClick(id, 'todo')} onEdit={handleEditClick} />
-        <Column title={boards.inProgress.title} items={boards.inProgress.items} onDelete={(id) => handleDeleteClick(id, 'inProgress')} onEdit={handleEditClick} />
-        <Column title={boards.done.title} items={boards.done.items} onDelete={(id) => handleDeleteClick(id, 'done')} onEdit={handleEditClick} />
+        <Column
+          title={boards.todo.title}
+          items={boards.todo.items}
+          onDelete={(id) => handleDeleteClick(id, "todo")}
+          onEdit={handleEditClick}
+        />
+        <Column
+          title={boards.inProgress.title}
+          items={boards.inProgress.items}
+          onDelete={(id) => handleDeleteClick(id, "inProgress")}
+          onEdit={handleEditClick}
+        />
+        <Column
+          title={boards.done.title}
+          items={boards.done.items}
+          onDelete={(id) => handleDeleteClick(id, "done")}
+          onEdit={handleEditClick}
+        />
 
         {showEditForm && selectedTask && (
           <EditTaskForm
