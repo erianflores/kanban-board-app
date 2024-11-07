@@ -7,7 +7,7 @@ export default function AboutPage() {
             <h1>About TaskCanvas</h1>
             <p>
               TaskCanvas is a Kanban board application built with React. 
-              It helps users organize and track their tasks using a visual board interface.
+              It helps users organise and track their tasks using a visual board interface.
             </p>
           </div>
 
