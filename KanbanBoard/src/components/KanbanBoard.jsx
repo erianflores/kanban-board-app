@@ -23,6 +23,7 @@ export default function KanbanBoard() {
 
   const [boards, setBoards] = useState(initialBoards);
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
 
   const handleDeleteClick = (id, status) => {
@@ -65,6 +66,16 @@ export default function KanbanBoard() {
     });
   };
 
+  const handleAddTask = (newTask) => {
+    setBoards(prev => ({
+        ...prev,
+        todo: {
+            ...prev.todo,
+            items: [...prev.todo.items, newTask]
+        }
+    }));
+};
+
   return (
     <div id="overlay-lower">
       <div id="kanban-container">
@@ -86,6 +97,17 @@ export default function KanbanBoard() {
           onDelete={(id) => handleDeleteClick(id, "done")}
           onEdit={handleEditClick}
         />
+
+        <button onClick={() => setShowAddForm(true)}>
+          Add New Task
+        </button>
+
+        {showAddForm && (
+          <AddTaskForm
+            onAddTask={handleAddTask}
+            onClose={() => setShowAddForm(false)}
+          />
+        )}
 
         {showEditForm && selectedTask && (
           <EditTaskForm

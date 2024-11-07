@@ -89,7 +89,7 @@ export default function AddTaskForm({ onClose, onAddTask }) {
 
         <div className="form-buttons">
           <button type="submit" className="submit-button">
-            Update Task
+            Add Task
           </button>
           <button type="button" className="cancel-button" onClick={onClose}>
             Cancel
