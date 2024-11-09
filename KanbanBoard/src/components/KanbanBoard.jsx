@@ -6,6 +6,8 @@ import EditTaskForm from "../pages/EditTaskForm";
 import AddTaskForm from "../pages/AddTaskForm";
 
 export default function KanbanBoard() {
+
+  // filtering the tasks into their board based on their status
   const initialBoards = {
     todo: {
       title: "To Do",

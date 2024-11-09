@@ -5,7 +5,7 @@ export default function AddTaskForm({ onClose, onAddTask }) {
     title: "",
     description: "",
     assignee: "",
-    priority: "",
+    priority: "Low",
     dueDate: "",
     status: "To Do",
   });
