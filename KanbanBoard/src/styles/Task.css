@@ -10,9 +10,12 @@
 #delete-button {
   margin-top: 10px;
   padding-inline: 5px;
+  border: 1px solid red;
+  margin-inline: 10px;
 }
 
 #edit-button {
   padding-inline: 5px;
   margin-top: 10px;
+  border: 1px solid greenyellow;
 }
