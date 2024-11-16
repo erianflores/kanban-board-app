@@ -12,10 +12,12 @@
   padding-inline: 5px;
   border: 1px solid red;
   margin-inline: 10px;
+  color: red;
 }
 
 #edit-button {
   padding-inline: 5px;
   margin-top: 10px;
   border: 1px solid greenyellow;
+  color: greenyellow;
 }
