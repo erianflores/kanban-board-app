@@ -2,11 +2,16 @@ import React from "react";
 import "../styles/Task.css";
 import { Link } from "react-router-dom";
 
-export default function Task({ items, onDelete, onEdit }) {
+export default function Task({ items, onDelete, onEdit, onDragStart }) {
   return (
     <>
       {items.map((item) => (
-        <div key={item.id} className="kanban-item">
+        <div
+          key={item.id}
+          className="kanban-item"
+          draggable
+          onDragStart={(e) => onDragStart(e, item)}
+        >
           <Link className="detail-row" to={`/details/${item.id}`}>
             <h3>{item.title}</h3>
           </Link>
