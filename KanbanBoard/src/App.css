@@ -5,6 +5,7 @@
 @import url(./styles/Task.css);
 @import url(./styles/pages.css);
 @import url(./styles/Details.css);
+@import url(./styles/AddTaskForm.css);
 
 body {
   background-color: purple;

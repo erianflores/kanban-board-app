@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import Details from "./pages/Details";
 import NotFound from "./pages/NotFound";
+import AddTaskForm from "./pages/AddTaskForm";
 
 export default function App() {
   return (
