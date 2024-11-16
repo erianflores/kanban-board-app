@@ -1,3 +1,4 @@
+// KanbanBoard.jsx
 import { useState } from "react";
 import "../styles/KanbanBoard.css";
 import data from "../assets/kanban.json";
@@ -26,17 +27,22 @@ export default function KanbanBoard() {
   const [showAddForm, setShowAddForm] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [draggedTask, setDraggedTask] = useState(null);
+  const [sourceColumn, setSourceColumn] = useState(null);
 
-  const handleDragStart = (e, task) => {
+  const handleDragStart = (e, task, status) => {
     setDraggedTask(task);
+    setSourceColumn(status);
   };
 
   const handleDrop = (newStatus) => {
-    if (!draggedTask) return;
+    if (!draggedTask || !sourceColumn || sourceColumn === newStatus) {
+      // If no task is being dragged, no source column, or same column, do nothing (FIX OF BUG ALLOWING FOR TASK DUPLICATION)
+      return;
+    }
 
     // Find the current board key that contains the dragged task
     const sourceBoardKey = Object.keys(boards).find((key) =>
-      boards[key].items.some((item) => item.id === draggedTask.id)
+      boards[key].title === sourceColumn
     );
 
     // Find the target board key based on the new status
@@ -46,7 +52,6 @@ export default function KanbanBoard() {
 
     if (sourceBoardKey && targetBoardKey) {
       setBoards(prevBoards => {
-        // Remove from source
         const sourceItems = prevBoards[sourceBoardKey].items.filter(
           item => item.id !== draggedTask.id
         );
@@ -70,6 +75,7 @@ export default function KanbanBoard() {
     }
 
     setDraggedTask(null);
+    setSourceColumn(null);
   };
 
   const handleDeleteClick = (id, status) => {
@@ -131,7 +137,7 @@ export default function KanbanBoard() {
           onDelete={(id) => handleDeleteClick(id, "todo")}
           onEdit={handleEditClick}
           onDrop={handleDrop}
-          onDragStart={handleDragStart}
+          onDragStart={(e, task) => handleDragStart(e, task, boards.todo.title)}
         />
         <Column
           title={boards.inProgress.title}
@@ -139,7 +145,7 @@ export default function KanbanBoard() {
           onDelete={(id) => handleDeleteClick(id, "inProgress")}
           onEdit={handleEditClick}
           onDrop={handleDrop}
-          onDragStart={handleDragStart}
+          onDragStart={(e, task) => handleDragStart(e, task, boards.inProgress.title)}
         />
         <Column
           title={boards.done.title}
@@ -147,7 +153,7 @@ export default function KanbanBoard() {
           onDelete={(id) => handleDeleteClick(id, "done")}
           onEdit={handleEditClick}
           onDrop={handleDrop}
-          onDragStart={handleDragStart}
+          onDragStart={(e, task) => handleDragStart(e, task, boards.done.title)}
         />
 
         <button onClick={() => setShowAddForm(true)}>
