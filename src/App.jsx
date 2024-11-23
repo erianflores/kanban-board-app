@@ -9,8 +9,11 @@ import AboutPage from "./pages/AboutPage";
 import Details from "./pages/Details";
 import NotFound from "./pages/NotFound";
 import AddTaskForm from "./pages/AddTaskForm";
+import data from "./assets/kanban.json";
 
 export default function App() {
+  const [tasks, setTasks] = useState(data);
+
   return (
     <div id="app-container">
       <Navbar />
@@ -18,9 +21,9 @@ export default function App() {
         <Sidebar />
         <div id="content-area">
           <Routes>
-            <Route path="/" element={<KanbanBoard />} />
+            <Route path="/" element={<KanbanBoard tasks={tasks} setTasks={setTasks} />} />
             <Route path="/about-page" element={<AboutPage />} />
-            <Route path="/details/:id" element={<Details />} />
+            <Route path="/details/:id" element={<Details tasks={tasks} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

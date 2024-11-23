@@ -1,24 +1,22 @@
-// KanbanBoard.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/KanbanBoard.css";
-import data from "../assets/kanban.json";
 import Column from "./Column";
 import EditTaskForm from "../pages/EditTaskForm";
 import AddTaskForm from "../pages/AddTaskForm";
 
-export default function KanbanBoard() {
+export default function KanbanBoard({ tasks, setTasks }) {
   const initialBoards = {
     todo: {
       title: "To Do",
-      items: data.filter((task) => task.status === "To Do"),
+      items: tasks.filter((task) => task.status === "To Do"),
     },
     inProgress: {
       title: "In Progress",
-      items: data.filter((task) => task.status === "In Progress"),
+      items: tasks.filter((task) => task.status === "In Progress"),
     },
     done: {
       title: "Done",
-      items: data.filter((task) => task.status === "Done"),
+      items: tasks.filter((task) => task.status === "Done"),
     },
   };
 
@@ -29,6 +27,23 @@ export default function KanbanBoard() {
   const [draggedTask, setDraggedTask] = useState(null);
   const [sourceColumn, setSourceColumn] = useState(null);
 
+  useEffect(() => {
+    setBoards({
+      todo: {
+        title: "To Do",
+        items: tasks.filter((task) => task.status === "To Do"),
+      },
+      inProgress: {
+        title: "In Progress",
+        items: tasks.filter((task) => task.status === "In Progress"),
+      },
+      done: {
+        title: "Done",
+        items: tasks.filter((task) => task.status === "Done"),
+      },
+    });
+  }, [tasks]);
+
   const handleDragStart = (e, task, status) => {
     setDraggedTask(task);
     setSourceColumn(status);
@@ -36,28 +51,28 @@ export default function KanbanBoard() {
 
   const handleDrop = (newStatus) => {
     if (!draggedTask || !sourceColumn || sourceColumn === newStatus) {
-      // If no task is being dragged, no source column, or same column, do nothing (FIX OF BUG ALLOWING FOR TASK DUPLICATION)
       return;
     }
 
-    // Find the current board key that contains the dragged task
     const sourceBoardKey = Object.keys(boards).find((key) =>
       boards[key].title === sourceColumn
     );
 
-    // Find the target board key based on the new status
     const targetBoardKey = Object.keys(boards).find((key) =>
       boards[key].title === newStatus
     );
 
     if (sourceBoardKey && targetBoardKey) {
+      const updatedTask = { ...draggedTask, status: newStatus };
+      setTasks(prevTasks => prevTasks.map(task => 
+        task.id === draggedTask.id ? updatedTask : task
+      ));
+
       setBoards(prevBoards => {
         const sourceItems = prevBoards[sourceBoardKey].items.filter(
           item => item.id !== draggedTask.id
         );
 
-        // Add to target with updated status
-        const updatedTask = { ...draggedTask, status: newStatus };
         const targetItems = [...prevBoards[targetBoardKey].items, updatedTask];
 
         return {
@@ -79,6 +94,7 @@ export default function KanbanBoard() {
   };
 
   const handleDeleteClick = (id, status) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
     setBoards((prevBoards) => {
       const updatedItems = prevBoards[status].items.filter(
         (item) => item.id !== id
@@ -99,6 +115,10 @@ export default function KanbanBoard() {
   };
 
   const handleUpdateTask = (updatedTask) => {
+    setTasks(prevTasks => prevTasks.map(task => 
+      task.id === updatedTask.id ? updatedTask : task
+    ));
+    
     setBoards((prevBoards) => {
       const boardKey = Object.keys(prevBoards).find((key) =>
         prevBoards[key].items.some((item) => item.id === updatedTask.id)
@@ -119,11 +139,16 @@ export default function KanbanBoard() {
   };
 
   const handleAddTask = (newTask) => {
+    const taskWithId = {
+      ...newTask,
+      id: Date.now().toString()
+    };
+    setTasks(prev => [...prev, taskWithId]);
     setBoards(prev => ({
       ...prev,
       todo: {
         ...prev.todo,
-        items: [...prev.todo.items, newTask]
+        items: [...prev.todo.items, taskWithId]
       }
     }));
   };

@@ -1,14 +1,30 @@
 import { useParams, Link } from "react-router-dom";
-import data from "../assets/kanban.json";
 
-export default function Details() {
+export default function Details({ tasks }) {
   const { id } = useParams();
-  const task = data.find((task) => task.id === id);
+  const task = tasks.find((task) => task.id === id);
+
+  if (!task) {
+    return (
+      <div className="page-container">
+        <div className="content-overlay">
+          <div className="details-content">
+            <div className="details-header">
+              <Link to="/" className="back-button">← Back to the Dashboard</Link>
+              <h1>Task Not Found</h1>
+            </div>
+            <p>The task you're looking for doesn't exist.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="page-container">
       <div className="content-overlay">
         <div className="details-content">
-        <div className="details-header">
+          <div className="details-header">
             <Link to="/" className="back-button">← Back to the Dashboard</Link>
             <h1>{task.title}</h1>
           </div>
