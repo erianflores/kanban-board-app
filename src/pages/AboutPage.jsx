@@ -6,8 +6,7 @@ export default function AboutPage() {
           <div className="about-section">
             <h1>About TaskCanvas</h1>
             <p>
-              TaskCanvas is a Kanban board application built with React. 
-              It helps users organise and track their tasks using a visual board interface.
+              TaskCanvas is a modern project management tool built to help organise workflows efficiently and intuitively. Inspired by agile methodologies, our Kanban board system allows users to visualise their work, limit work-in-progress, and maximise efficiency. Whether you're working solo or as part of a team, TaskCanvas helps bring clarity to your projects through a simple drag-and-drop interface and real-time task management. Created by developers for developers, our platform emphasises simplicity and functionality, helping you focus on what matters most - getting things done.
             </p>
           </div>
 
